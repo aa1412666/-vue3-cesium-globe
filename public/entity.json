@@ -1,0 +1,579 @@
+[
+  {
+    "id": "document",
+    "version": "1.0",
+    "clock": {
+      "currentTime": "2025-06-18T00:00:00.000Z",
+      "multiplier": 100,
+      "interval": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+      "range": "LOOP_STOP",
+      "step": "SYSTEM_CLOCK_MULTIPLIER"
+    }
+  },
+  {
+    "id": "1753671453126",
+    "name": "通信帐篷1",
+    "description": "通信帐篷1",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence/icon/32478289654185984..glb",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "地面终端",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, -2178657.082724949, 4388876.23355147, 4069505.7479817215]
+    }
+  },
+  {
+    "id": "1753671456741",
+    "name": "通信帐篷2",
+    "description": "通信帐篷2",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence/icon/32478289654185984..glb",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "地面终端",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, -2178657.082724949, 4388876.23355147, 4069505.7479817215]
+    }
+  },
+  {
+    "id": "1753671458605",
+    "name": "通信帐篷3",
+    "description": "通信帐篷3",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence/icon/32478289654185984..glb",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "地面终端",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, -2178657.082724949, 4388876.23355147, 4069505.7479817215]
+    }
+  },
+  {
+    "id": "1753671337293",
+    "name": "无人机1",
+    "description": "无人机1",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence/icon/32477476760322048..glb",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "无人机",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [
+        0, -2853346.434417388, 4656238.1929669315, 3285139.589701193
+      ]
+    }
+  },
+  {
+    "id": "1753671339503",
+    "name": "无人机2",
+    "description": "无人机2",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence/icon/32477476760322048..glb",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "无人机",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [
+        0, -2853346.434417388, 4656238.1929669315, 3285139.589701193
+      ]
+    }
+  },
+  {
+    "id": "1753671340579",
+    "name": "无人机3",
+    "description": "无人机3",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence/icon/32477476760322048..glb",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "无人机",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [
+        0, -2853346.434417388, 4656238.1929669315, 3285139.589701193
+      ]
+    }
+  },
+  {
+    "id": "东方红-LEO-1",
+    "name": "东方红-LEO-1",
+    "description": "东方红-LEO-1",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "卫星",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, 6378137.0, 0.0, 0.0]
+    }
+  },
+  {
+    "id": "东方红-GEO-1",
+    "name": "东方红-GEO-1",
+    "description": "东方红-GEO-1",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "卫星",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, 6378137.0, 0.0, 0.0]
+    }
+  },
+  {
+    "id": "东方红-GEO-2",
+    "name": "东方红-GEO-2",
+    "description": "东方红-GEO-2",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "卫星",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, 6378137.0, 0.0, 0.0]
+    }
+  },
+  {
+    "id": "东方红-MEO-1",
+    "name": "东方红-MEO-1",
+    "description": "东方红-MEO-1",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "卫星",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, 6378137.0, 0.0, 0.0]
+    }
+  },
+  {
+    "id": "东方红-MEO-2",
+    "name": "东方红-MEO-2",
+    "description": "东方红-MEO-2",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "卫星",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, 6378137.0, 0.0, 0.0]
+    }
+  },
+  {
+    "id": "东方红-IGSO-1",
+    "name": "东方红-IGSO-1",
+    "description": "东方红-IGSO-1",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "卫星",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, 6378137.0, 0.0, 0.0]
+    }
+  },
+  {
+    "id": "东方红-IGSO-2",
+    "name": "东方红-IGSO-2",
+    "description": "东方红-IGSO-2",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "卫星",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, 6378137.0, 0.0, 0.0]
+    }
+  },
+  {
+    "id": "东方红-IGSO-3",
+    "name": "东方红-IGSO-3",
+    "description": "东方红-IGSO-3",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "卫星",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, 6378137.0, 0.0, 0.0]
+    }
+  },
+  {
+    "id": "东方红-LEO-2",
+    "name": "东方红-LEO-2",
+    "description": "东方红-LEO-2",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "卫星",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, 6378137.0, 0.0, 0.0]
+    }
+  },
+  {
+    "id": "东方红-LEO-3",
+    "name": "东方红-LEO-3",
+    "description": "东方红-LEO-3",
+    "availability": "2025-06-18T00:00:00.000Z/2025-06-19T00:00:00.000Z",
+    "model": {
+      "show": true,
+      "uri": "/api/sence",
+      "scale": 1.5,
+      "maximumScale": 10000,
+      "minimumPixelSize": 100,
+      "maximumPixelSize": 100,
+      "screenSpaceError": 20
+    },
+    "label": {
+      "show": true,
+      "text": "卫星",
+      "horizontalOrigin": "TOP",
+      "pixelOffset": {
+        "cartesian2": [12, 0]
+      },
+      "fillColor": {
+        "rgba": ["213", "255", "0", 255]
+      },
+      "font": "11pt Lucida Console",
+      "outlineColor": {
+        "rgba": [0, 0, 0, 255]
+      },
+      "outlineWidth": 2
+    },
+    "position": {
+      "epoch": "2025-06-18T00:00:00.000Z",
+      "cartesian": [0, 6378137.0, 0.0, 0.0]
+    }
+  }
+]
