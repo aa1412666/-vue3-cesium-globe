@@ -10,6 +10,7 @@ export default class Earth {
     Cesium.Ion.defaultAccessToken = this.token;
   }
   async initCesium() {
+    const terrainProvider = await Cesium.createWorldTerrainAsync();
     this.viewer = new Cesium.Viewer(this.container, {
       geocoder: false,
       baseLayerPicker: false,
@@ -21,7 +22,11 @@ export default class Earth {
       infoBox: false,
       animation: true,
       timeline: true,
+      terrainProvider,
+      sceneMode: Cesium.SceneMode.SCENE3D,
     });
+  // 添加光照效果
+  this.viewer.scene.globe.enableLighting = true;
     this.viewer.imageryLayers.addImageryProvider(
       await Cesium.IonImageryProvider.fromAssetId(3)
     );

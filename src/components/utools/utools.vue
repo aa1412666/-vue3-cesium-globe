@@ -137,6 +137,7 @@ const onMeasureClick = () => {
   showMeasureTools.value = !showMeasureTools.value;
 };
 </script>
+
 <style scoped lang="scss">
 .left-toolbar {
   position: absolute;
