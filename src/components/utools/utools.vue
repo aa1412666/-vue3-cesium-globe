@@ -141,9 +141,8 @@ const onMeasureClick = () => {
 <style scoped lang="scss">
 .left-toolbar {
   position: absolute;
-  top: 50%;
-  left: 16px;
-  transform: translateY(-50%);
+  top: 24px;
+  right: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -184,7 +183,7 @@ const onMeasureClick = () => {
 .measure-tools-panel {
   position: absolute;
   top: 0;
-  left: 48px; /* 主按钮右侧 */
+  right: 48px; /* 主按钮左侧 */
   display: grid;
   grid-template-columns: repeat(3, 44px);
   grid-auto-rows: 44px;
@@ -206,5 +205,4 @@ const onMeasureClick = () => {
   user-select: none;
   pointer-events: none;
 }
-/* 已移除延迟提示相关样式 */
 </style>
