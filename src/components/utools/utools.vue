@@ -1,11 +1,25 @@
 <template>
   <!-- 左上角新按钮 -->
   <div class="top-left-button">
-    <button class="tool-btn" title="功能按钮">
+    <button class="tool-btn" title="功能按钮" @click="onFunctionClick">
       <svg t="1757410981676" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2513" width="200" height="200">
         <path d="M177.738667 652.949333A364.074667 364.074667 0 0 0 331.306667 826.517333v-310.826666L192.490667 645.152c-4.298667 4.010667-9.397333 6.613333-14.752 7.808z m-19.989334-62.922666l209.706667-195.562667H170.666667c-0.618667 0-1.237333-0.010667-1.845334-0.053333A362.186667 362.186667 0 0 0 149.333333 512c0 26.784 2.901333 52.906667 8.416 78.026667z m302.08-195.562667a32.064 32.064 0 0 1-5.152 6.186667l-62.112 57.909333c1.76 3.957333 2.730667 8.341333 2.730667 12.949333v79.541334c3.584 1.642667 6.912 3.978667 9.802667 7.008l67.573333 70.848h90.570667l68.298666-72.938667v-95.872l-68.181333-66.826667c-2.773333 0.778667-5.685333 1.194667-8.693333 1.194667h-94.837334zM395.232 855.466667A362.218667 362.218667 0 0 0 512 874.666667c32.768 0 64.522667-4.341333 94.72-12.490667l-211.413333-221.653333V853.333333c0 0.714667-0.032 1.418667-0.074667 2.133334z m275.466667-17.269334a364.266667 364.266667 0 0 0 155.690666-145.28H533.706667l131.946666 138.346667c2.026667 2.133333 3.712 4.469333 5.045334 6.933333z m184.693333-209.216A362.208 362.208 0 0 0 874.666667 512c0-36.661333-5.44-72.053333-15.552-105.408L650.912 628.906667H853.333333c0.693333 0 1.376 0.021333 2.058667 0.064zM197.962667 330.464h301.312l-139.733334-136.938667a31.978667 31.978667 0 0 1-5.898666-7.893333A364.266667 364.266667 0 0 0 197.973333 330.474667z m220.373333-168.917333l213.205333 208.938666v-195.2c0-1.92 0.170667-3.786667 0.490667-5.621333A362.112 362.112 0 0 0 512 149.333333c-32.384 0-63.786667 4.245333-93.653333 12.213334zM695.552 446.613333V487.637333l134.432-143.573333c0.746667-0.8 1.546667-1.557333 2.346667-2.261333a364.373333 364.373333 0 0 0-136.778667-142.666667v247.488zM512 938.666667C276.362667 938.666667 85.333333 747.637333 85.333333 512S276.362667 85.333333 512 85.333333s426.666667 191.029333 426.666667 426.666667-191.029333 426.666667-426.666667 426.666667z" fill="#ffffff" p-id="2514"></path>
       </svg>
     </button>
+  </div>
+
+  <!-- 大圆环显示 -->
+  <div v-if="showCircleRing" class="circle-ring-overlay">
+    <div class="circle-ring">
+      <!-- 外圆 -->
+      <div class="outer-circle"></div>
+      <!-- 环形毛玻璃区域 -->
+      <div class="ring-area"></div>
+      <!-- 内圆 -->
+      <div class="inner-circle"></div>
+      <!-- 中心框 -->
+      <div class="center-bar"></div>
+    </div>
   </div>
 
   <div class="left-toolbar">
@@ -157,6 +171,7 @@ const emit = defineEmits<{
 }>();
 
 const showMeasureTools = ref(false);
+const showCircleRing = ref(false);
 
 const onMeasureClick = () => {
   showMeasureTools.value = !showMeasureTools.value;
@@ -164,6 +179,10 @@ const onMeasureClick = () => {
 
 const onCompassClick = () => {
   emit('compass');
+};
+
+const onFunctionClick = () => {
+  showCircleRing.value = !showCircleRing.value;
 };
 </script>
 
@@ -235,17 +254,91 @@ const onCompassClick = () => {
   pointer-events: none;
 }
 
-/* 左上角按钮样式 */
+/* 左栏中间按钮 */
 .top-left-button {
-  position: fixed; /* 改为fixed定位，相对于视窗 */
-  top: 24px;
-  left: 24px;
-  z-index: 20;
+  position: fixed; /* 保持fixed定位，相对于视窗 */
+  top: 50%; /* 垂直居中 */
+  left: 24px; /* 保持左侧24px距离 */
+  transform: translateY(-50%); /* 精确垂直居中 */
+  z-index: 40; /* 提高z-index，确保在圆环覆盖层之上 */
   pointer-events: auto;
 }
 
 /* 指北按钮样式 */
 .compass-wrapper {
   position: relative;
+}
+
+/* 大圆环覆盖层 */
+.circle-ring-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10; /* 降低z-index，避免遮挡Cesium控件 */
+  pointer-events: none; /* 改为none，不阻挡任何点击事件 */
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.circle-ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 内圆：从顶部到底部，占据左侧四分之一区域的内侧 */
+.inner-circle {
+  position: absolute;
+  width: 100vh; /* 使用视窗高度作为直径，确保圆足够大 */
+  height: 100vh;
+  border: none; /* 移除边框 */
+  border-radius: 50%;
+  background: transparent;
+  /* 圆心位置：使圆弧覆盖左侧1/4区域的内侧 */
+  left: calc(-100vh + 25vw - 50px); /* 圆心在左侧，右边缘到达25%位置内侧 */
+  top: 0;
+}
+
+/* 外圆：从顶部到底部，占据左侧四分之一区域的外侧 */
+.outer-circle {
+  position: absolute;
+  width: calc(100vh + 400px); /* 比内圆大400px，进一步扩大环形面积 */
+  height: calc(100vh + 400px);
+  border: none; /* 移除边框 */
+  border-radius: 50%;
+  background: transparent;
+  /* 圆心位置：使圆弧覆盖左侧1/4区域的外侧 */
+  left: calc(-100vh - 200px + 25vw - 50px); /* 调整位置以保持同心圆 */
+  top: -200px; /* 调整位置以保持同心圆 */
+}
+
+/* 环形毛玻璃区域 */
+.ring-area {
+  position: absolute;
+  width: calc(100vh + 400px); /* 与外圆相同 */
+  height: calc(100vh + 400px);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1); /* 半透明白色背景 */
+  backdrop-filter: blur(10px); /* 毛玻璃模糊效果 */
+  /* 使用mask创建环形形状 */
+  mask: radial-gradient(circle at center, transparent 50vh, black calc(50vh + 1px), black calc(50vh + 200px - 1px), transparent calc(50vh + 200px));
+  -webkit-mask: radial-gradient(circle at center, transparent 50vh, black calc(50vh + 1px), black calc(50vh + 200px - 1px), transparent calc(50vh + 200px));
+  /* 与外圆相同的定位 */
+  left: calc(-100vh - 200px + 25vw - 50px);
+  top: -200px;
+}
+
+/* 圆环中心框 */
+.center-bar {
+  width: 210px; /* 长度450px */
+  height: 60px;  /* 宽度6px */
+  background: transparent; /* 改为透明背景 */
+  border: 2px solid rgba(255, 255, 255, 0.9); /* 添加白色边框 */
+  /* 定位在圆环的中心 */
+  position: fixed; /* 保持fixed定位，相对于视窗 */
+  top: 47%; 
+  left: 277px; 
+  border-radius: 5px; /* 稍微圆角 */
 }
 </style>

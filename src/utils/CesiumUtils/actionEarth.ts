@@ -24,11 +24,13 @@ export default class Earth {
       timeline: true,
       terrainProvider,
       sceneMode: Cesium.SceneMode.SCENE3D,
+      creditContainer: document.createElement('div'), // 隐藏版权信息
     });
     
     // 天地图token
     const tdtKey = "3be4f683aa97741583a90ca02be19f64";
     
+    // 使用Cesium默认底图（Bing Maps），无需额外配置
     // Cesium.Viewer默认会使用Cesium Ion提供的Bing Maps卫星影像
     
     // 加载天地图地理标签（叠加在Cesium底图之上）
@@ -42,5 +44,20 @@ export default class Earth {
 
     // 只添加天地图标签图层，底图使用Cesium默认的
     this.viewer.imageryLayers.add(tdtLabelLayer);
+    
+    // 调整 Cesium 控件的 z-index 层级
+    setTimeout(() => {
+      // 调整 animation 控件的 z-index
+      const animationContainer = this.container.querySelector('.cesium-viewer-animationContainer') as HTMLElement;
+      if (animationContainer) {
+        animationContainer.style.zIndex = '20';
+      }
+      
+      // 调整 timeline 控件的 z-index
+      const timelineContainer = this.container.querySelector('.cesium-viewer-timelineContainer') as HTMLElement;
+      if (timelineContainer) {
+        timelineContainer.style.zIndex = '20';
+      }
+    }, 100); // 延迟确保DOM已渲染
   }
 }
