@@ -48,16 +48,16 @@ interface ButtonConfig {
 
 // 滚轮选择器数据 - 为每个按钮预留功能插口
 const buttonConfigs: ButtonConfig[] = [
-  { id: 'A', label: 'A', action: () => handleActionA(), description: '功能A' },
-  { id: 'B', label: 'B', action: () => handleActionB(), description: '功能B' },
-  { id: 'C', label: 'C', action: () => handleActionC(), description: '功能C' },
-  { id: 'D', label: 'D', action: () => handleActionD(), description: '功能D' },
-  { id: 'E', label: 'E', action: () => handleActionE(), description: '功能E' },
-  { id: 'F', label: 'F', action: () => handleActionF(), description: '功能F' },
-  { id: 'G', label: 'G', action: () => handleActionG(), description: '功能G' },
-  { id: 'H', label: 'H', action: () => handleActionH(), description: '功能H' },
-  { id: 'I', label: 'I', action: () => handleActionI(), description: '功能I' },
-  { id: 'J', label: 'J', action: () => handleActionJ(), description: '功能J' },
+  { id: 'A', label: 'A.红蓝双方病逝概览', action: () => handleActionA(), description: '功能A' },
+  { id: 'B', label: 'B.蓝方兵力部署', action: () => handleActionB(), description: '功能B' },
+  { id: 'C', label: 'C.蓝方J15作战机', action: () => handleActionC(), description: '功能C' },
+  { id: 'D', label: 'D.蓝方KJ200作战机', action: () => handleActionD(), description: '功能D' },
+  { id: 'E', label: 'E.蓝方基站雷达', action: () => handleActionE(), description: '功能E' },
+  { id: 'F', label: 'F.红方兵力部署', action: () => handleActionF(), description: '功能F' },
+  { id: 'G', label: 'G.红方KJ200作战机', action: () => handleActionG(), description: '功能G' },
+  { id: 'H', label: 'H.红方兵力-J20作战机', action: () => handleActionH(), description: '功能H' },
+  { id: 'I', label: 'I.红方指挥所', action: () => handleActionI(), description: '功能I' },
+  { id: 'J', label: 'J.红方红旗16', action: () => handleActionJ(), description: '功能J' },
   { id: 'K', label: 'K', action: () => handleActionK(), description: '功能K' },
   { id: 'L', label: 'L', action: () => handleActionL(), description: '功能L' },
   { id: 'M', label: 'M', action: () => handleActionM(), description: '功能M' },
@@ -348,10 +348,10 @@ onUnmounted(() => {
 
 /* 选中项目显示 */
 .selected-item {
-  font-size: 32px;
+  font-size: 16px;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.95);
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 </style>
