@@ -25,10 +25,22 @@ export default class Earth {
       terrainProvider,
       sceneMode: Cesium.SceneMode.SCENE3D,
     });
-  // 添加光照效果
-  this.viewer.scene.globe.enableLighting = true;
-    this.viewer.imageryLayers.addImageryProvider(
-      await Cesium.IonImageryProvider.fromAssetId(3)
-    );
+    
+    // 天地图token
+    const tdtKey = "3be4f683aa97741583a90ca02be19f64";
+    
+    // Cesium.Viewer默认会使用Cesium Ion提供的Bing Maps卫星影像
+    
+    // 加载天地图地理标签（叠加在Cesium底图之上）
+    const tdtLabelLayer = new Cesium.ImageryLayer(new Cesium.WebMapTileServiceImageryProvider({
+      url: `http://t0.tianditu.com/cia_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=${tdtKey}`,
+      layer: "tdtAnnoLayer",
+      style: "default",
+      format: "image/jpeg",
+      tileMatrixSetID: "GoogleMapsCompatible",
+    }));
+
+    // 只添加天地图标签图层，底图使用Cesium默认的
+    this.viewer.imageryLayers.add(tdtLabelLayer);
   }
 }
