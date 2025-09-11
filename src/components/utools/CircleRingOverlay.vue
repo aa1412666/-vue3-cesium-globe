@@ -4,7 +4,7 @@
       <!-- 外圆 -->
       <div class="outer-circle"></div>
       <!-- 环形毛玻璃区域 -->
-      <div class="ring-area" @wheel.prevent="handleWheel">
+      <div class="ring-area">
         <!-- 滚轮选择器区域 -->
         <div class="scroll-picker-container">
           <div 
@@ -19,6 +19,8 @@
       </div>
       <!-- 内圆 -->
       <div class="inner-circle"></div>
+      <!-- 专门的滚轮交互区域：只在真正的环形区域内 -->
+      <div class="ring-interaction-area" @wheel.prevent="handleWheel"></div>
       <!-- 中心框 -->
       <div class="center-bar" @click="handleButtonClick" @wheel.prevent="handleWheel">
         <div class="selected-item">{{ selectedItem.label }}</div>
@@ -252,7 +254,7 @@ onUnmounted(() => {
   top: -200px; /* 调整位置以保持同心圆 */
 }
 
-/* 环形毛玻璃区域 */
+/* 环形毛玻璃区域 - 只负责视觉效果，不处理交互 */
 .ring-area {
   position: absolute;
   width: calc(100vh + 400px); /* 与外圆相同 */
@@ -266,9 +268,23 @@ onUnmounted(() => {
   /* 与外圆相同的定位 */
   left: calc(-100vh - 200px + 25vw - 50px);
   top: -200px;
-  /* 启用滚轮交互，但不能点击 */
+  /* 不处理任何交互事件 */
+  pointer-events: none;
+}
+
+/* 专门的环形交互区域 - 只在真正的环形区域内响应滚轮 */
+.ring-interaction-area {
+  position: absolute;
+  /* 交互区域：从25vw位置开始，向右延伸到环形区域结束 */
+  left: 25vw;
+  top: 0;
+  width: 200px; /* 环形区域的宽度 */
+  height: 100vh;
+  /* 启用滚轮交互 */
   pointer-events: auto;
-  cursor: default; /* 改为默认光标，表示不可点击 */
+  cursor: default;
+  /* 调试用：可以临时添加背景色查看交互区域 */
+  /* background: rgba(255, 0, 0, 0.1); */
 }
 
 /* 滚轮选择器容器 */
