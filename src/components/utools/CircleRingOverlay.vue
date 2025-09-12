@@ -1,29 +1,43 @@
 <template>
-  <div v-if="visible" class="circle-ring-overlay">
-    <div class="circle-ring">
-      <!-- 外圆 -->
-      <div class="outer-circle"></div>
-      <!-- 内圆 -->
-      <div class="inner-circle"></div>
-      <!-- 环形毛玻璃区域 -->
-      <div class="ring-area"></div>
-      <!-- 圆环项目容器 -->
-      <div class="circular-items-container">
-        <!-- 环形分布的选择器项目 -->
-        <div 
-          v-for="(item, index) in circularItems" 
-          :key="item.id"
-          :class="['circular-picker-item', { 'selected': index === selectedCircularIndex }]"
-          :style="getCircularItemStyle(index)"
-          @click="index === selectedCircularIndex ? handleItemClick(item) : null"
-        >
-          <div class="item-content">{{ item.label }}</div>
-        </div>
-      </div>
+  <Transition name="el-fade-in" appear>
+    <div v-if="visible" class="circle-ring-overlay">
+      <div class="circle-ring">
+        <!-- 外圆 -->
+        <div class="outer-circle"></div>
+        <!-- 内圆 -->
+        <div class="inner-circle"></div>
+        <!-- 环形毛玻璃区域 -->
+        <Transition name="el-zoom-in-center" appear :duration="{ enter: 600, leave: 400 }">
+          <div v-if="visible" class="ring-area"></div>
+        </Transition>
+        <!-- 圆环项目容器 -->
+        <Transition name="el-fade-in-linear" appear :duration="{ enter: 800, leave: 400 }">
+          <div v-if="visible" class="circular-items-container">
+            <!-- 环形分布的选择器项目 -->
+            <TransitionGroup 
+              name="item-fade" 
+              tag="div" 
+              class="items-wrapper"
+              appear
+              :duration="{ enter: 500, leave: 300 }"
+            >
+              <div 
+                v-for="(item, index) in circularItems" 
+                :key="`${item.id}-${currentIndex}`"
+                :class="['circular-picker-item', { 'selected': index === selectedCircularIndex }]"
+                :style="getCircularItemStyle(index)"
+                @click="index === selectedCircularIndex ? handleItemClick(item) : null"
+              >
+                <div class="item-content">{{ item.label }}</div>
+              </div>
+            </TransitionGroup>
+          </div>
+        </Transition>
       <!-- 滚轮交互区域 -->
       <div class="ring-interaction-area" @wheel.prevent="handleWheel"></div>
     </div>
   </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
@@ -164,7 +178,8 @@ const getCircularItemStyle = (index: number) => {
     top: `calc(50vh + (${radiusVh}vh + ${ringWidth}px) * ${offsetY})`,
     transform: `translate(-50%, -50%) scale(${scale})`,
     opacity: opacity,
-    zIndex: isSelected ? 150 : 100
+    zIndex: isSelected ? 150 : 100,
+    '--item-index': index.toString()
   };
 };
 
@@ -343,6 +358,37 @@ onUnmounted(() => {
   z-index: 50;
 }
 
+/* 项目包装器 */
+.items-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 项目过渡动画 */
+.item-fade-enter-active {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: calc(var(--item-index, 0) * 50ms);
+}
+
+.item-fade-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.item-fade-enter-from {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.3) rotate(-10deg);
+}
+
+.item-fade-leave-to {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.item-fade-move {
+  transition: all 0.4s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
 /* 滚轮交互区域 */
 .ring-interaction-area {
   position: absolute;
@@ -384,7 +430,7 @@ onUnmounted(() => {
   color: rgba(255, 255, 255, 0.9);
   background: rgba(255, 255, 255, 0.15);
   border-radius: 20px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   pointer-events: none;
@@ -406,15 +452,17 @@ onUnmounted(() => {
   animation: shimmer 2s ease-in-out infinite;
   pointer-events: auto;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .circular-picker-item.selected:hover {
   background: rgba(255, 255, 255, 0.4);
-  transform: scale(1.05);
+  transform: translate(-50%, -50%) scale(1.25);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.6);
 }
 
 .circular-picker-item.selected:active {
-  transform: scale(0.95);
+  transform: translate(-50%, -50%) scale(1.15);
 }
 
 /* 闪光动画 */
