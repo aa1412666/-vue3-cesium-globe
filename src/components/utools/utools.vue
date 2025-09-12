@@ -1,11 +1,28 @@
 <template>
-  <!-- 左上角新按钮 -->
+  <!-- 功能按钮 -->
   <div class="top-left-button">
-    <button class="tool-btn" title="功能按钮" @click="onFunctionClick">
-      <svg t="1757410981676" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2513" width="200" height="200">
+    <Transition name="el-zoom-in-center">
+      <button 
+        class="tool-btn" 
+        :class="toolbarManager.functionButton.getButtonClasses()"
+        title="功能按钮" 
+        @click="onFunctionClick"
+        key="function-btn"
+      >
+      <svg 
+        t="1757410981676" 
+        class="icon function-icon" 
+        viewBox="0 0 1024 1024" 
+        version="1.1" 
+        xmlns="http://www.w3.org/2000/svg" 
+        p-id="2513" 
+        width="200" 
+        height="200"
+      >
         <path d="M177.738667 652.949333A364.074667 364.074667 0 0 0 331.306667 826.517333v-310.826666L192.490667 645.152c-4.298667 4.010667-9.397333 6.613333-14.752 7.808z m-19.989334-62.922666l209.706667-195.562667H170.666667c-0.618667 0-1.237333-0.010667-1.845334-0.053333A362.186667 362.186667 0 0 0 149.333333 512c0 26.784 2.901333 52.906667 8.416 78.026667z m302.08-195.562667a32.064 32.064 0 0 1-5.152 6.186667l-62.112 57.909333c1.76 3.957333 2.730667 8.341333 2.730667 12.949333v79.541334c3.584 1.642667 6.912 3.978667 9.802667 7.008l67.573333 70.848h90.570667l68.298666-72.938667v-95.872l-68.181333-66.826667c-2.773333 0.778667-5.685333 1.194667-8.693333 1.194667h-94.837334zM395.232 855.466667A362.218667 362.218667 0 0 0 512 874.666667c32.768 0 64.522667-4.341333 94.72-12.490667l-211.413333-221.653333V853.333333c0 0.714667-0.032 1.418667-0.074667 2.133334z m275.466667-17.269334a364.266667 364.266667 0 0 0 155.690666-145.28H533.706667l131.946666 138.346667c2.026667 2.133333 3.712 4.469333 5.045334 6.933333z m184.693333-209.216A362.208 362.208 0 0 0 874.666667 512c0-36.661333-5.44-72.053333-15.552-105.408L650.912 628.906667H853.333333c0.693333 0 1.376 0.021333 2.058667 0.064zM197.962667 330.464h301.312l-139.733334-136.938667a31.978667 31.978667 0 0 1-5.898666-7.893333A364.266667 364.266667 0 0 0 197.973333 330.474667z m220.373333-168.917333l213.205333 208.938666v-195.2c0-1.92 0.170667-3.786667 0.490667-5.621333A362.112 362.112 0 0 0 512 149.333333c-32.384 0-63.786667 4.245333-93.653333 12.213334zM695.552 446.613333V487.637333l134.432-143.573333c0.746667-0.8 1.546667-1.557333 2.346667-2.261333a364.373333 364.373333 0 0 0-136.778667-142.666667v247.488zM512 938.666667C276.362667 938.666667 85.333333 747.637333 85.333333 512S276.362667 85.333333 512 85.333333s426.666667 191.029333 426.666667 426.666667-191.029333 426.666667-426.666667 426.666667z" fill="#ffffff" p-id="2514"></path>
       </svg>
     </button>
+    </Transition>
   </div>
 
   <!-- 环形毛玻璃界面组件 -->
@@ -13,9 +30,16 @@
 
   <div class="left-toolbar">
     <div class="tool-wrapper">
-      <button class="tool-btn" title="测量" @click="onMeasureClick">
+      <Transition name="el-zoom-in-center">
+        <button 
+          class="tool-btn" 
+          :class="toolbarManager.measureButton.getButtonClasses()"
+          title="测量" 
+          @click="onMeasureClick"
+          key="measure-btn"
+        >
         <svg
-          class="icon"
+          class="icon measure-icon"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
@@ -26,7 +50,9 @@
           />
         </svg>
       </button>
-      <div v-if="showMeasureTools" class="measure-tools-panel">
+      </Transition>
+      <Transition name="el-fade-in-linear">
+        <div v-if="showMeasureTools" class="measure-tools-panel">
         <span class="panel-title">测量工具</span>
         <!-- 行1: 空间距离 / 地表距离 / 投影距离 -->
         <button class="tool-btn" title="空间距离">
@@ -137,29 +163,147 @@
             />
           </svg>
         </button>
-      </div>
+        </div>
+      </Transition>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import CircleRingOverlay from "./CircleRingOverlay.vue";
+import { ref, onMounted, onUnmounted } from "vue";// 引入Vue的响应式和生命周期函数
+import CircleRingOverlay from "./CircleRingOverlay.vue";// 引入圆环界面组件
 
 // 定义emit事件
 const emit = defineEmits<{
 }>();
 
+// 按钮基类
+abstract class BaseButton {
+  public isActive = ref(false);
+
+  constructor(protected name: string) {}
+
+  // 切换激活状态
+  public toggleActive(): void {
+    this.isActive.value = !this.isActive.value;
+  }
+
+  // 设置激活状态
+  public setActive(active: boolean): void {
+    this.isActive.value = active;
+  }
+
+  // 抽象方法：子类必须实现的点击处理逻辑
+  abstract handleClick(): void;
+
+  // 统一的点击处理流程
+  public onClick(): void {
+    this.handleClick();
+  }
+
+  // 获取按钮状态类名
+  public getButtonClasses(): Record<string, boolean> {
+    return {
+      'active': this.isActive.value
+    };
+  }
+}
+
+// 测量按钮类
+class MeasureButton extends BaseButton {
+  constructor() {
+    super('measure');
+  }
+
+  handleClick(): void {
+    this.toggleActive();
+    console.log(`${this.name} button clicked, active: ${this.isActive.value}`);
+  }
+}
+
+// 功能按钮类
+class FunctionButton extends BaseButton {
+  constructor() {
+    super('function');
+  }
+
+  handleClick(): void {
+    this.toggleActive();
+    console.log(`${this.name} button clicked, active: ${this.isActive.value}`);
+  }
+}
+
+// 工具栏管理器类
+class ToolbarManager {
+  public measureButton: MeasureButton;
+  public functionButton: FunctionButton;
+
+  constructor() {
+    this.measureButton = new MeasureButton();
+    this.functionButton = new FunctionButton();
+  }
+
+  // 初始化工具栏
+  public init(): void {
+    console.log('ToolbarManager initialized');
+  }
+
+  // 重置所有按钮状态
+  public resetAllButtons(): void {
+    this.measureButton.setActive(false);
+    this.functionButton.setActive(false);
+  }
+
+  // 获取测量工具面板显示状态
+  public get showMeasureTools(): boolean {
+    return this.measureButton.isActive.value;
+  }
+
+  // 获取圆环界面显示状态
+  public get showCircleRing(): boolean {
+    return this.functionButton.isActive.value;
+  }
+
+  // 销毁管理器
+  public destroy(): void {
+    this.resetAllButtons();
+    console.log('ToolbarManager destroyed');
+  }
+}
+
+// 创建工具栏管理器实例
+const toolbarManager = new ToolbarManager();
+
+// 便捷的访问属性
 const showMeasureTools = ref(false);
 const showCircleRing = ref(false);
 
-const onMeasureClick = () => {
-  showMeasureTools.value = !showMeasureTools.value;
+// 响应式更新显示状态
+const updateDisplayStates = () => {
+  showMeasureTools.value = toolbarManager.showMeasureTools;
+  showCircleRing.value = toolbarManager.showCircleRing;
 };
 
-const onFunctionClick = () => {
-  showCircleRing.value = !showCircleRing.value;
+// 测量按钮点击处理
+const onMeasureClick = () => {
+  toolbarManager.measureButton.onClick();
+  updateDisplayStates();
 };
+
+// 功能按钮点击处理
+const onFunctionClick = () => {
+  toolbarManager.functionButton.onClick();
+  updateDisplayStates();
+};
+
+// 生命周期钩子
+onMounted(() => {
+  toolbarManager.init();
+});
+
+onUnmounted(() => {
+  toolbarManager.destroy();
+});
 </script>
 
 <style scoped lang="scss">
@@ -187,19 +331,36 @@ const onFunctionClick = () => {
   justify-content: center;
   padding: 0;
   outline: none;
-  transition: background 0.2s, border-color 0.2s;
+  transition: all 0.2s ease;
+  transform-origin: center;
 }
+
 .tool-btn:hover {
   background: rgba(50, 50, 50, 0.75);
   border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
 }
+
 .tool-btn:active {
   background: rgba(70, 70, 70, 0.9);
+  transform: scale(0.95);
+}
+
+/* 激活状态（面板打开时） */
+.tool-btn.active {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+.tool-btn.active:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 .icon {
   width: 24px;
   height: 24px;
   display: block;
+  transition: transform 0.3s ease;
 }
 .tool-wrapper {
   position: relative;
