@@ -7,5 +7,6 @@ declare global {
   const Vue: typeof Vue;
   interface Window {
     Cesium: typeof _Cesium;
+    _earth: any;
   }
 }
